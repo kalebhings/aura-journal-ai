@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  # This defines our PostgreSQL database service
+  postgres-db:
+    image: postgres:15
+    container_name: aura_postgres_db
+    ports:
+      - "5432:5432" # Connects local port 5432 to the container's port
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=mysecretpassword
+      - POSTGRES_DB=aura_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data: # This makes sure data isn't lost when container is stopped
