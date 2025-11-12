@@ -1,0 +1,11 @@
+### Test the "hello" endpoint (a GET request)
+GET http://localhost:8080/api/entries/hello
+
+
+### Create a new text-only journal entry (a POST request)
+POST http://localhost:8080/api/entries
+Content-Type: application/json
+
+{
+  "entryText": "This is my first journal entry! It's working!"
+}
