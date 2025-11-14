@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(origins = "http://localhost:3000") // Tells Java server to allow request from React app
 @RestController // Tells Spring this is an API Controller
 @RequestMapping("/api/entries") // All endpoints in this class will start with /api/entries
 public class JournalEntryController {
