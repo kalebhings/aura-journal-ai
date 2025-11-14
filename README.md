@@ -2,7 +2,7 @@
 
 > An intelligent, private, and multimodal journaling application designed to make self-reflection effortless and insightful.
 
-This repository contains the source code for Aura. This project is currently in **Phase 1 of active development**, focused on building the core backend services.
+This repository contains the source code for Aura. **Phase 1 of development is complete**, with a functional full-stack application connecting a React frontend to a Java Spring Boot backend.
 
 ---
 
@@ -28,14 +28,14 @@ This project is being built as a multi-language, microservice-based application.
 | :--- | :--- | :--- |
 | **Main Backend** | Java (Spring Boot) | ✅ **Functional** |
 | **Database** | PostgreSQL (Docker) | ✅ **Functional** |
-| **Frontend** | React (JavaScript) | 🔜 **Up Next** |
-| **AI Service** | Python (FastAPI) | 📋 **Planned** |
+| **Frontend** | React (JavaScript) | ✅ **Functional (Phase 1)** |
+| **AI Service** | Python (FastAPI) | 🔜 **Up Next** |
 
 ---
 
-## 🚀 How to Run Locally (Backend Only)
+## 🚀 How to Run Locally
 
-You can currently run the Java backend and its PostgreSQL database.
+You can now run the full-stack application (Frontend + Backend + Database).
 
 1.  **Clone the repository:**
     ```sh
@@ -53,9 +53,18 @@ You can currently run the Java backend and its PostgreSQL database.
     *(This will start the PostgreSQL database in the background).*
 
 4.  **Run the Java Backend:**
-    * Open the `services/main-backend` project in IntelliJ.
+    * In a terminal, navigate to `services/main-backend`.
+    * Open the project in IntelliJ.
     * Run the `MainBackendApplication.java` file.
     * The server will start on `http://localhost:8080`.
 
-5.  **Test the API:**
-    * The `requests.http` file in the project is configured to test the running API endpoints.
+5.  **Run the React Frontend:**
+    * Open a **new terminal**.
+    * Navigate to the `services/frontend` directory.
+    * Run `npm install` (only needed the first time).
+    * Run `npm start`.
+    * Your browser will automatically open to `http://localhost:3000`.
+
+6.  **Use the Application:**
+    * You can now use the web app in your browser to save journal entries.
+    * You can also still use the `requests.http` file to test the API directly.
