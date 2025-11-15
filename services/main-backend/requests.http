@@ -9,3 +9,24 @@ Content-Type: application/json
 {
   "entryText": "This is my first journal entry! It's working!"
 }
+
+### ==================================
+### AI SERVICE TESTS
+### ==================================
+
+### Test AI Service (Positive Text)
+POST http://localhost:8000/analyze/sentiment
+Content-Type: application/json
+
+{
+  "text": "This is a wonderful day, I am feeling very happy!"
+}
+
+
+### Test AI Service (Negative Text)
+POST http://localhost:8000/analyze/sentiment
+Content-Type: application/json
+
+{
+  "text": "This is a terrible experience, I am very upset."
+}

@@ -1,7 +1,9 @@
 package com.aura.journal.main_backend.controller;
 
+import com.aura.journal.main_backend.dto.SentimentResponse;
 import com.aura.journal.main_backend.model.JournalEntry;
 import com.aura.journal.main_backend.repository.JournalEntryRepository;
+import com.aura.journal.main_backend.service.AIService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +16,9 @@ public class JournalEntryController {
     // Asks Spring to give the repository
     @Autowired
     private JournalEntryRepository journalEntryRepository;
+
+    @Autowired
+    private AIService aiService;
 
     @GetMapping("/ping")
     public String ping() {
@@ -31,6 +36,15 @@ public class JournalEntryController {
      */
     @PostMapping
     public ResponseEntity<JournalEntry> createTextEntry(@RequestBody JournalEntry newEntry) {
+
+        try {
+            SentimentResponse sentiment = aiService.getSentiment(newEntry.getEntryText());
+
+            newEntry.setSentiment(sentiment.getSentiment());;
+        } catch (Exception e) {
+            System.err.println("Error calling AI service: " + e.getMessage());
+            newEntry.setSentiment(null);
+        }
 
         // Take the entry from the request and save it.
         // The .save() method is provided by JpaRepository
